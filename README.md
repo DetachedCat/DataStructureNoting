@@ -1,0 +1,2 @@
+# DataStructureNoting
+Noting my steps
