@@ -1,0 +1,65 @@
+%278->f1 1073->f2 1273->f3
+%Lagrange 插值多项式：2200102415 潘多峰
+clear all
+clc
+x1=[314,329,341,360,372]
+y1=[0.734,0.738,0.747,0.755,0.768]
+syms x
+f1(x)=0*x^0
+f11(x)=1*x^0
+for n=1:5
+    for i=1:5
+        if n==i
+            continue
+        end
+        f11(x)=f11(x)*(x-x1(i))/(x1(n)-x1(i))
+    end
+    f1(x)=f1(x)+y1(n)*f11
+    f11(x)=1
+end
+simplify(f1)
+ 
+x2=[308,331,320,357,365]
+y2=[0.692,0.778,0.745,0.967,0.969]
+f2(x)=0*x^0
+f22(x)=1*x^0
+for n=1:5
+    for i=1:5
+        if n==i
+            continue
+        end
+        f22(x)=f22(x)*(x-x2(i))/(x2(n)-x2(i))
+    end
+    f2(x)=f2(x)+y2(n)*f22
+    f22(x)=1
+end
+simplify(f2)
+ 
+x3=[261,332,335,365,378]
+y3=[0.653,0.796,0.703,0.724,0.841]
+f3(x)=0*x^0
+f33(x)=1*x^0
+for n=1:5
+    for i=1:5
+        if n==i
+            continue
+        end
+        f33(x)=f33(x)*(x-x3(i))/(x3(n)-x3(i))
+    end
+    f3(x)=f3(x)+y3(n)*f33
+    f33(x)=1
+end
+simplify(f3)
+
+%Lagrange 插值多项式
+x=250:10:400
+f1(x)
+f2(x)
+f3(x)
+plot(x,f1(x),'k')
+hold on
+plot(x,f2(x),'m')
+hold on
+plot(x,f3(x),'g')
+hold off
+
